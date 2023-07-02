@@ -1,0 +1,64 @@
+---
+title: Capitalized Title Here
+author: Johannes B. Gruber
+date: today
+format:
+  html:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+---
+
+# Introduction
+
+A few words on what this document accomplishes.
+I use one sentence per line to make it easier to see changes with version control, such as on GitHub.
+
+## Packages
+
+Write which packages you use at the beginning so if a package is missing, the script fails early.
+
+```{r}
+#| include: false
+library("dplyr")
+library("ggplot2")
+start <- Sys.time() # note start time for later
+```
+
+## Data
+
+```{r load data}
+data <- ggplot2::diamonds
+```
+
+# Main
+
+The main part of the document with analysis and plots.
+
+```{r analysis}
+data %>% 
+  count(cut)
+```
+
+Plot!
+
+```{r plot}
+data %>% 
+  count(cut) %>% 
+  ggplot(aes(x = n, y = cut)) +
+  geom_col()
+```
+
+
+# wrap up
+
+Save data if it takes long to preprocess it here. 
+Afterwards we get some information which is important to reproduce the report.
+
+```{r}
+sessionInfo()
+Sys.time()
+# note how long the script takes to (re-)run
+Sys.time() - start
+```

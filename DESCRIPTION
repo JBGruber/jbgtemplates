@@ -1,0 +1,19 @@
+Package: jbgtemplates
+Type: Package
+Title: JBGruber's templates
+Version: 0.0.1.9000
+Authors@R: person("Johannes", "Gruber", email = "JohannesB.Gruber@gmail.com",
+  role = c("aut", "cre"))
+Description: My personal collection of templates and some functions I re-use that fit nowhere else.
+License: GPL-3
+Imports:
+    cli,
+    rlang,
+    quarto,
+    fs
+Suggests:
+    attachment,
+    remotes,
+    rstudioapi
+Encoding: UTF-8
+RoxygenNote: 7.2.3
