@@ -4,7 +4,14 @@
 \alias{install_deps}
 \title{Install dependencies}
 \usage{
-install_deps(path = ".", packages = NULL, gh_packages = NULL)
+install_deps(
+  path = ".",
+  pattern = "*.[.](Rmd|rmd|qmd)$",
+  recursive = TRUE,
+  packages = NULL,
+  gh_packages = NULL,
+  dependencies = TRUE
+)
 }
 \arguments{
 \item{path}{path to check for files (checks recursivly).}

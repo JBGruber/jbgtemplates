@@ -13,7 +13,7 @@
 #' install_deps(gh_packages = "JBGruber/paperboy")
 #' }
 install_deps <- function(path = ".",
-                         pattern = "*.[.](Rmd|rmd|qmd)$",
+                         pattern = "[.](Rmd|rmd|qmd)$",
                          recursive = TRUE,
                          packages = NULL,
                          gh_packages = NULL,
