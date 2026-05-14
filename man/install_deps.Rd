@@ -6,7 +6,7 @@
 \usage{
 install_deps(
   path = ".",
-  pattern = "*.[.](Rmd|rmd|qmd)$",
+  pattern = "[.](Rmd|rmd|qmd)$",
   recursive = TRUE,
   packages = NULL,
   gh_packages = NULL,

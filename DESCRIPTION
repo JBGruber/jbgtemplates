@@ -10,10 +10,11 @@ Imports:
     cli,
     rlang,
     quarto,
+    tokenizers,
     fs
 Suggests:
     attachment,
     remotes,
     rstudioapi
 Encoding: UTF-8
-RoxygenNote: 7.3.3
+Config/roxygen2/version: 8.0.0
