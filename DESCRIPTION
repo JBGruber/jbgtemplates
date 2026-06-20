@@ -11,7 +11,10 @@ Imports:
     rlang,
     quarto,
     tokenizers,
-    fs
+    fs,
+    gh,
+    pak,
+    utils
 Suggests:
     attachment,
     remotes,

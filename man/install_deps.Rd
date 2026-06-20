@@ -16,9 +16,15 @@ install_deps(
 \arguments{
 \item{path}{path to check for files (checks recursivly).}
 
+\item{pattern}{pattern to include in search for files.}
+
+\item{recursive}{search for files recursivly.}
+
 \item{packages}{additional packages.}
 
 \item{gh_packages}{additional GitHub packages.}
+
+\item{dependencies}{install dependencies.}
 }
 \description{
 Checks the path for R, Rmd and Qmd files and installs all references packages.

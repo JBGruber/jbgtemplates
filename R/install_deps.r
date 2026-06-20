@@ -3,8 +3,11 @@
 #' Checks the path for R, Rmd and Qmd files and installs all references packages.
 #'
 #' @param path path to check for files (checks recursivly).
+#' @param pattern pattern to include in search for files.
+#' @param recursive search for files recursivly.
 #' @param packages additional packages.
 #' @param gh_packages additional GitHub packages.
+#' @param dependencies install dependencies.
 #'
 #' @export
 #'
@@ -12,12 +15,14 @@
 #' \dontrun{
 #' install_deps(gh_packages = "JBGruber/paperboy")
 #' }
-install_deps <- function(path = ".",
-                         pattern = "[.](Rmd|rmd|qmd)$",
-                         recursive = TRUE,
-                         packages = NULL,
-                         gh_packages = NULL,
-                         dependencies = TRUE) {
+install_deps <- function(
+  path = ".",
+  pattern = "[.](Rmd|rmd|qmd)$",
+  recursive = TRUE,
+  packages = NULL,
+  gh_packages = NULL,
+  dependencies = TRUE
+) {
   rlang::check_installed("attachment", "in order to use this function")
   files <- list.files(
     path = path,
@@ -32,7 +37,7 @@ install_deps <- function(path = ".",
   needed_packages <- unique(c(
     if (!is.null(files$rmd)) attachment::att_from_rmds(files$rmd),
     if (!is.null(files$qmd)) attachment::att_from_qmds(files$qmd),
-    if (!is.null(files$r))  attachment::att_from_rscripts(files$r),
+    if (!is.null(files$r)) attachment::att_from_rscripts(files$r),
     packages
   ))
 
@@ -40,8 +45,12 @@ install_deps <- function(path = ".",
     action <- function(pkgs, ...) pak::pak(pkgs, dependencies = dependencies)
     if (!is.null(gh_packages)) action(gh_packages)
   } else {
-    action <- function(pkgs, ...) install.packages(pkgs, dependencies = dependencies)
-    for (p in gh_packages) install_deps_gh(p)
+    action <- function(pkgs, ...) {
+      utils::install.packages(pkgs, dependencies = dependencies)
+    }
+    for (p in gh_packages) {
+      install_deps_gh(p)
+    }
   }
 
   rlang::check_installed(unique(needed_packages), action = action)

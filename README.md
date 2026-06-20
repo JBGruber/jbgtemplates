@@ -1,9 +1,10 @@
 
-<!-- README.md is generated from README.qmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # jbgtemplates
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 This is a collection of functions and templates I keep reusing. I moved
